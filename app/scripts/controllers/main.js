@@ -3,34 +3,26 @@
 angular.module('chartBarApp')
   .controller('MainCtrl', function ($scope) {
         $scope.config = {
-            title: 'Products',
-            tooltips: true,
-            labels: false,
-            mouseover: function() {},
-            mouseout: function() {},
-            click: function() {},
-            legend: {
-                display: true,
-                //could be 'left, right'
-                position: 'right'
-            }
+            tooltips: true
         };
 
         $scope.data = {
-            series: ['Sales', 'Income', 'Expense', 'Laptops', 'Keyboards'],
             data: [{
-                x: "Laptops",
-                y: [100, 500, 0],
-                tooltip: "this is tooltip"
+                x: "2014-1",
+                y: [100],
+                tooltip: "100 hours"
             }, {
-                x: "Desktops",
-                y: [300, 100, 100]
+                x: "2014-2",
+                y: [300],
+                tooltip: "300 hours"
             }, {
-                x: "Mobiles",
-                y: [351]
+                x: "2014-3",
+                y: [351],
+                tooltip: "351 hours"
             }, {
-                x: "Tablets",
-                y: [54, 0, 879]
+                x: "2014-4",
+                y: [54],
+                tooltip: "54 hours"
             }]
         };
   });

@@ -3,7 +3,8 @@
 angular
   .module('chartBarApp', [
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'angularCharts'
   ])
   .config(function ($routeProvider) {
     $routeProvider

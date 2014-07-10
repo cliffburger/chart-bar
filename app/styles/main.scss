@@ -1,6 +1,13 @@
 // bower:scss
 // endbower
 
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  height: 500px;
+}
+
 .chart {
   width: 100%;
   height: 100px;
@@ -12,4 +19,48 @@ g.y.axis{
 
 g.x.axis{
   display: none;
+}
+
+.timeline {
+  width: 500px;
+  height: 30px;
+  background: lightblue;
+  cursor: default;
+
+  .slider {
+    width: 20%;
+    background: lightcyan;
+    height: 20px;
+    border: 5px solid lightblue;
+    position: relative;
+    transition: left .3s ease;
+    top: 0;
+    cursor: move;
+  }
+
+  .slider.ghost {
+    opacity: .6;
+    transition: none;
+    margin-top: -30px;
+  }
+}
+
+grid {
+  .container {
+    height: 50px;
+    width: 500px;
+    overflow-x: scroll;
+    display: block;
+
+    .row {
+      display: table-row;
+      height: 50px;
+
+      .data {
+        display: table-cell;
+        padding: 10px;
+        border: 1px cadetblue solid;
+      }
+    }
+  }
 }

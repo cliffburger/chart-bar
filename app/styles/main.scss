@@ -53,15 +53,13 @@ grid {
     height: 50px;
     width: 100%;
     overflow-x: scroll;
-    display: block;
 
     .row {
-      display: table-row;
       height: 50px;
 
       .data {
         display: table-cell;
-        padding: 10px;
+        padding: 10px 60px;
         border: 1px cadetblue solid;
       }
     }

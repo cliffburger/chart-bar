@@ -23,12 +23,15 @@ angular.module('chartBarApp')
             hours: getChartHours($scope.data.data)
         };
 
-    });
+    }).directive('addDataRight',function(){
+
+    })
+;
 
 function getChartData(val) {
     var data = [];
     var size = val.length;
-    for (var i = 0; i < size; i++) {
+    for (var i = 0; i < size-9; i++) {
         data.push(getData(val[i]));
     }
 
@@ -38,6 +41,7 @@ function getChartData(val) {
 function getData(i) {
     // Just to display the y -axis
     var hours = Math.round(Math.random() * 100);
+
     return {
         x: moment(i).format('L'),
         y: [hours],

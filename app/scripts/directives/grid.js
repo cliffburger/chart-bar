@@ -28,7 +28,7 @@ angular.module('chartBarApp')
                                 '<div class="data" ng-repeat="date in dates">{{date.format("L")}}</div>' +
                         '</div>' +
                          '<div class="row">'+
-                             '<div class="hours" ng-repeat="hour in requirements.hours track by $index">{{hour}}</div>'+
+                             '<div class="hours" ng-repeat="hour in requirements.hours track by $index"><div>{{hour}}</div></div>'+
                         '</div>'+
                 '</div>',
             restrict: 'E',

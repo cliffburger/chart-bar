@@ -3,7 +3,7 @@
 angular.module('chartBarApp')
     .directive('sliderng', function () {
         return {
-            template: '<div class="sliderng"><div class="slider" /><div class="ghost slider" /></div><div class="pin"><div class="label" /></div>',
+            template: '<div class="sliderng"><div class="slider" /><div class="ghost slider" /></div><div class="scroll-bar" /><div class="pin"><div class="label" /></div>',
             restrict: 'EA',
             controller: function ($scope) {
                 $scope.pins = [
@@ -19,6 +19,7 @@ angular.module('chartBarApp')
 
                 var sliderng = $element.find('.sliderng'),
                     slider = sliderng.find('.slider'),
+                    scrollBar = $element.find('.scroll-bar'),
                     minPosition = 0,
                     outerSliderWidth = slider.outerWidth(),
                     timelineWidth = sliderng.width(),
@@ -78,6 +79,11 @@ angular.module('chartBarApp')
                 sliderng.bind('mousedown.slider', enableDrag);
 
                 setSlider((timelineWidth / 2) - (outerSliderWidth / 2));
+
+                $scope.$on('scroll-position-changed', function (e, value) {
+                    var scrollBarLeft = slider.offset().left + (value * outerSliderWidth);
+                    scrollBar.css({left: scrollBarLeft});
+                });
             }
         };
     });

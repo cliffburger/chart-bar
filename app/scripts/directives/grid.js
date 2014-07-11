@@ -25,6 +25,8 @@ angular.module('chartBarApp')
         return {
             template: '<div class="container"><div class="row"><div class="data" ng-repeat="date in dates">{{date.format("L")}}</div></div></div>',
             restrict: 'E',
+            controller: function ($scope) {
+            },
             link: function ($scope, $element) {
                 $scope.$on('slider-position-changed', function (e, data) {
                     var midpoint = $element.find('.container')[0].scrollWidth / 2;
@@ -44,6 +46,11 @@ angular.module('chartBarApp')
                                     }
                                 });
                     });
+                });
+
+                $element.find('.container').bind('scroll', function () {
+                    var scrollPercentage = $element.find('.container').scrollLeft() / $element.find('.container')[0].scrollWidth;
+                    $scope.$broadcast('scroll-position-changed', scrollPercentage);
                 });
             }
         };

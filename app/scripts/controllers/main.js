@@ -15,52 +15,53 @@ angular.module('chartBarApp')
 
         $scope.collection = dates;
 
-        $scope.data = {
-            data: getChartData(dates)
-        };
-
         $scope.requirements = {
-            hours: getChartHours($scope.data.data)
+            hours : getChartRequirements(dates)
         };
 
-    }).directive('addDataRight',function(){
+        $scope.requirementsTwo= {
+            hours:getChartRequirements(dates)
+        };
 
-    })
-;
+        $scope.data = {
+            data: getChartData(dates, $scope.requirements, $scope.requirementsTwo)
+        };
 
-function getChartData(val) {
+    });
+
+function getChartData(val, req1, req2) {
     var data = [];
     var size = val.length;
     for (var i = 0; i < size-9; i++) {
-        data.push(getData(val[i]));
+        data.push(getData(val[i], req1.hours[i],req2.hours[i]));
     }
 
     return data;
 }
 
-function getData(i) {
-    // Just to display the y -axis
-    var hours = Math.round(Math.random() * 100);
+function getData(i , r1, r2) {
+    var data =[];
+
+    if(r1 < r2){
+        data =[r1,r2,0]
+    }
+    else {
+       data= [r2, r1, 0];
+    }
 
     return {
         x: moment(i).format('L'),
-        y: [hours],
-        tooltip: hours + ' hours'
+        y: data
+        //tooltip: hours + ' hours'
     };
 }
-// get the hours for the chart
-function getChartHours(data){
-    var hours = [];
-    var size = data.length;
-    for(var h = 0; h < size; h++)
-    {
-        hours.push(getHour(data[h]))
-    }
-    return hours;
-}
 
-function getHour(h)
+function getChartRequirements(data)
 {
-    return h.y[0];
-
+    var size = data.length, hours = [];
+    for(var i=0; i< size;i++){
+       var h=  Math.round(Math.random()*100);
+       hours.push(h);
+    }
+ return hours;
 }

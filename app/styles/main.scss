@@ -13,6 +13,10 @@ body {
   height: 100px;
 }
 
+.ac-chart {
+   opacity: .3;
+}
+
 g.y.axis{
   display: none;
 }
@@ -20,6 +24,20 @@ g.y.axis{
 g.x.axis{
   display: none;
 }
+
+.pin {
+  background: red;
+  position: absolute;
+  width: 2px;
+  height: 50px;
+
+  .label {
+    width: 50px;
+    background: lightcoral;
+  }
+}
+
+
 
 .timeline {
   width: 100%;

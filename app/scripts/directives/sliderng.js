@@ -3,9 +3,16 @@
 angular.module('chartBarApp')
     .directive('sliderng', function () {
         return {
-            template: '<div class="timeline"><div class="slider" /><div class="ghost slider" /></div>',
+            template: '<div class="timeline"><div class="slider" /><div class="ghost slider" /></div><div class="pin"><div class="label" /></div>',
             restrict: 'EA',
-            transclude: true,
+            controller: function ($scope) {
+                $scope.pins = [
+                    {
+                        label: 'Today',
+                        data: moment()
+                    }
+                ];
+            },
             link: function(
                 $scope,
                 $element) {

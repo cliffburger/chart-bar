@@ -3,7 +3,7 @@
 angular.module('chartBarApp')
     .directive('sliderng', function () {
         return {
-            template: '<div class="timeline"><div class="slider" /><div class="ghost slider" /></div><div class="pin"><div class="label" /></div>',
+            template: '<div class="sliderng"><div class="slider" /><div class="ghost slider" /></div><div class="pin"><div class="label" /></div>',
             restrict: 'EA',
             controller: function ($scope) {
                 $scope.pins = [
@@ -17,16 +17,16 @@ angular.module('chartBarApp')
                 $scope,
                 $element) {
 
-                var timeline = $element.find('.timeline'),
-                    slider = timeline.find('.slider'),
+                var sliderng = $element.find('.sliderng'),
+                    slider = sliderng.find('.slider'),
                     minPosition = 0,
                     outerSliderWidth = slider.outerWidth(),
-                    timelineWidth = timeline.width(),
+                    timelineWidth = sliderng.width(),
                     maxPosition = timelineWidth - outerSliderWidth,
                     sliding = false,
-                    ghostSlider = timeline.find('.ghost.slider'),
-                    timelineLeft = timeline.position().left,
-                    body = timeline.closest('body'),
+                    ghostSlider = sliderng.find('.ghost.slider'),
+                    timelineLeft = sliderng.position().left,
+                    body = sliderng.closest('body'),
                     collectionLength = $scope.collection ? $scope.collection.length : 1,
                     indexFactor = timelineWidth / collectionLength,
                     currentPosition = slider.position().left;
@@ -75,7 +75,7 @@ angular.module('chartBarApp')
                     });
                 }
 
-                timeline.bind('mousedown.slider', enableDrag);
+                sliderng.bind('mousedown.slider', enableDrag);
 
                 setSlider((timelineWidth / 2) - (outerSliderWidth / 2));
             }

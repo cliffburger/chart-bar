@@ -14,7 +14,8 @@ body {
 }
 
 .ac-chart {
-   opacity: .3;
+  opacity: .3;
+  margin-left: -40px;
 }
 
 g.y.axis{
@@ -37,9 +38,25 @@ g.x.axis{
   }
 }
 
-
-
 .timeline {
+  position: absolute;
+  top: 40px;
+  height: 40px;
+  width:  100%;
+  z-index: 0;
+  left: 10px;
+  font-weight: 600;
+
+  .timeline-year {
+    display: table-cell;
+    padding: 5px;
+    border-left: 2px solid black;
+    height: 30px;
+    min-width: 400px;
+  }
+}
+
+.sliderng {
   width: 100%;
   height: 40px;
   background: lightblue;
@@ -47,6 +64,7 @@ g.x.axis{
   opacity: 0.7;
   position: absolute;
   top: 40px;
+  z-index: 1;
 
   .slider {
     width: 264px;

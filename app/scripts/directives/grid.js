@@ -8,7 +8,7 @@ function getDates(centerDate) {
         dates.push(moment(centerDate).subtract('months', i));
         dates.push(moment(centerDate).add('months', i));
     }
-    return dates.sort(function (date1, date2) {
+    dates = dates.sort(function (date1, date2) {
         if (date1.valueOf() > date2.valueOf()){
             return 1;
         }
@@ -17,6 +17,7 @@ function getDates(centerDate) {
         }
         return 0;
     });
+    return dates;
 }
 
 angular.module('chartBarApp')
@@ -26,13 +27,22 @@ angular.module('chartBarApp')
             restrict: 'E',
             link: function ($scope, $element) {
                 $scope.$on('slider-position-changed', function (e, data) {
-                    console.log(data);
+                    var midpoint = $element.find('.container')[0].scrollWidth / 2;
+
                     $scope.dates = getDates(moment(data.data));
 
                     setTimeout(function () {
-                        $element.find('.container').animate({
-                            'scrollLeft': ($element.find('.container')[0].scrollWidth / 2)
-                        }, 800);
+                        $scope.$digest();
+                        $element.find('.container')
+                            .addClass('disable-scroll')
+                            .scrollLeft(data.direction === 'left' ? $element.find('.container')[0].scrollWidth : 0)
+                            .animate({
+                                    'scrollLeft': midpoint
+                                }, {
+                                    complete: function () {
+                                        $element.find('.container').removeClass('disable-scroll');
+                                    }
+                                });
                     });
                 });
             }

@@ -4,7 +4,8 @@ angular.module('chartBarApp')
     .directive('sliderng', function () {
         return {
             template: '<div class="timeline"><div class="slider" /><div class="ghost slider" /></div>',
-            restrict: 'E',
+            restrict: 'EA',
+            transclude: true,
             link: function(
                 $scope,
                 $element) {
@@ -20,7 +21,8 @@ angular.module('chartBarApp')
                     timelineLeft = timeline.position().left,
                     body = timeline.closest('body'),
                     collectionLength = $scope.collection ? $scope.collection.length : 1,
-                    indexFactor = timelineWidth / collectionLength;
+                    indexFactor = timelineWidth / collectionLength,
+                    currentPosition = slider.position().left;
 
                 function locationToMove(e) {
                     var clickPosition = e.clientX - timelineLeft - (outerSliderWidth / 2);
@@ -33,15 +35,15 @@ angular.module('chartBarApp')
                 }
 
                 function setSlider(location){
-                    var positionLeft = location;
-
                     disableDrag();
 
                     $scope.$broadcast('slider-position-changed', {
-                        data: $scope.collection ? $scope.collection[parseInt(positionLeft / indexFactor)] : null
+                        data: $scope.collection ? $scope.collection[parseInt(location / indexFactor)] : null,
+                        direction: location < currentPosition ? 'left' : 'right'
                     });
 
-                    slider[0].style.left = positionLeft + 'px';
+                    slider[0].style.left = location + 'px';
+                    currentPosition = location;
                 }
 
                 function enableDrag() {

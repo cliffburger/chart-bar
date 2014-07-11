@@ -18,6 +18,11 @@ angular.module('chartBarApp')
         $scope.data = {
             data: getChartData(dates)
         };
+
+        $scope.requirements = {
+            hours: getChartHours($scope.data.data)
+        };
+
     });
 
 function getChartData(val) {
@@ -38,4 +43,20 @@ function getData(i) {
         y: [hours],
         tooltip: hours + ' hours'
     };
+}
+// get the hours for the chart
+function getChartHours(data){
+    var hours = [];
+    var size = data.length;
+    for(var h = 0; h < size; h++)
+    {
+        hours.push(getHour(data[h]))
+    }
+    return hours;
+}
+
+function getHour(h)
+{
+    return h.y[0];
+
 }

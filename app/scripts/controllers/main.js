@@ -6,10 +6,6 @@ angular.module('chartBarApp')
             tooltips: true
         };
 
-        $scope.data = {
-            data: getChartData()
-        };
-
         var dates = [],
             i;
 
@@ -18,21 +14,27 @@ angular.module('chartBarApp')
         }
 
         $scope.collection = dates;
+
+        $scope.data = {
+            data: getChartData(dates)
+        };
     });
 
-function getChartData() {
+function getChartData(val) {
     var data = [];
-    for (var i = 0; i < 100; i++) {
-        data.push(getData(i));
+    var size = val.length;
+    for (var i = 0; i < size; i++) {
+        data.push(getData(val[i]));
     }
 
     return data;
 }
 
 function getData(i) {
+    // Just to display the y -axis
     var hours = Math.round(Math.random() * 100);
     return {
-        x: '2014-' + i,
+        x: moment(i).format('L'),
         y: [hours],
         tooltip: hours + ' hours'
     };

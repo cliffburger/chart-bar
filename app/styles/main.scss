@@ -6,6 +6,8 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
   height: 500px;
+  width: 99%;
+  overflow-x: none;
 }
 
 .chart {
@@ -25,7 +27,9 @@ g.y.axis{
 g.x.axis{
   display: none;
 }
-
+.g rect{
+width:10px;
+}
 .pin {
   position: absolute;
   top: 80px;
@@ -45,22 +49,22 @@ g.x.axis{
   position: absolute;
   top: 40px;
   height: 40px;
-  width:  90%;
+  width:  98%;
   z-index: 0;
   left: 10px;
   font-weight: 600;
 
   .timeline-year {
-    display: table-cell;
+    display: inline-block;
     padding: 5px;
     border-left: 2px solid black;
     height: 30px;
-    min-width: 400px;
+    width:18%;
   }
 }
 
 .sliderng {
-  width: 100%;
+  width: 99%;
   height: 40px;
   background: lightblue;
   cursor: default;
@@ -97,7 +101,7 @@ g.x.axis{
 
 grid {
   .container {
-    height: 150px;
+    height: 200px;
     width: 100%;
     overflow-x: scroll;
 

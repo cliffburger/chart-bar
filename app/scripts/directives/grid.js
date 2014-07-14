@@ -33,7 +33,10 @@ angular.module('chartBarApp')
                                 '</div>'+
 
                                 '<div class="row">'+
-                                '<div class="hours" ng-repeat="hour in requirementsTwo.hours track by $index"><div>{{hour}}</div></div>'+
+                                    '<div class="hours" ng-repeat="hour in requirementsTwo.hours track by $index"><div>{{hour}}</div></div>'+
+                                '</div>'+
+                                '<div class="row">'+
+                                    '<div class="hours" ng-repeat="hour in requirementsThree.hours track by $index"><div>{{hour}}</div></div>'+
                                 '</div>'+
                        '</div>',
             restrict: 'E',

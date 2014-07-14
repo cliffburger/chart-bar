@@ -11,13 +11,17 @@ body {
 }
 
 .chart {
-  width: 75%;
+  width: 99%;
   height: 100px;
 }
 
 .ac-chart {
   opacity: .3;
   margin-left: -40px;
+  width: 100%;
+   .angular-charts-template .ac-chart svg{
+     width: 100%;
+   }
 }
 
 g.y.axis{
@@ -27,19 +31,18 @@ g.y.axis{
 g.x.axis{
   display: none;
 }
-.g rect{
-width:10px;
+g.g rect{
+width:20px;
 }
 .pin {
   position: absolute;
   top: 80px;
-  left: 650px;
+  left: 29%;
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-bottom: 5px solid red;
-
   .label {
     margin: 5px 0 0 -4px;
   }
@@ -112,6 +115,7 @@ grid {
         display: table-cell;
         padding: 15px 60px;
         border: 1px cadetblue solid;
+        background-color: Lavender;
       }
       .hours{
         display: table-cell;
